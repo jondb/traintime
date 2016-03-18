@@ -219,6 +219,8 @@ class BartApi():
 
   def get_adjacent_station(self, route, orig):
     """Return the station before and after the current station."""
+    if not route:
+      return orig, orig
     stations = self.route_info(route=route)['config']
     for i, stn in enumerate(stations):
       if stn == orig:
