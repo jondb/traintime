@@ -1,0 +1,57 @@
+<html>
+	<head>
+		<title>Bart {{start}} to {{end}}</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
+		<style>
+			body {
+			  padding-top: 0px;
+			}
+			.starter-template {
+			  padding: 10px 15px;
+			  text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		  <div class="container">
+
+<div class="row">
+<span style="float:left"><a href="{{ url_for('next_trains', start=prev_station, end=end) }}">{{ prev_station }}</a></span>
+<span style="float:right"><a href="{{ url_for('next_trains', start=next_station, end=end) }}">{{ next_station }}</a></span>
+</div>
+
+      <div class="starter-template">
+  
+		
+		<h1>{{start}} to {{end}}</h1>
+
+		{% for train in trains %}
+			<h2>{{ train.minutes }} minutes</h2>
+			<ul>
+				<p><span style="color:{{ train.hexcolor }}; background-color:{{ train.hexcolor }}">[...]</span>{{ train.destination }}, {{ train.length }} car train 
+				{% if train.arrives %}
+					(arrive at {{ train.arrives }})
+				{% endif %}
+				</p>
+			</ul>
+		{% endfor %}
+
+		<hr>
+		{% if status != 'No delays reported.' %}
+			<h1>System Status</h1>
+			<p>{{status}}</p>
+		{% else %}
+			<p>{{status}}</p>
+		{% endif %}
+
+
+	</div>
+</div>
+			
+	</body>
+</html>
+
+

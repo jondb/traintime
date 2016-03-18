@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <title>Bart {{start}} to {{end}}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
+        <style>
+            body {
+              padding-top: 0px;
+            }
+            .starter-template {
+              padding: 10px 15px;
+              text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+          <div class="container">
+
+      <div class="starter-template">
+        
+        <h1>{{dowhat}}</h1>
+
+        {% for stn in stns %}
+            <h2>{{ train.minutes }} minutes</h2>
+            <ul>
+                <p><span style="color:{{ train.hexcolor }}; background-color:{{ train.hexcolor }}">[...]</span>{{ train.destination }}, {{ train.length }} car train 
+                {% if train.arrives %}
+                    (arrive at {{ train.arrives }})
+                {% endif %}
+                </p>
+            </ul>
+        {% endfor %}
+
+    </div>
+</div>
+            
+    </body>
+</html>
+
+
